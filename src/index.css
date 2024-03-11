@@ -17,9 +17,17 @@ body {
   background-color: var(--jf-primary-background);
 }
 
+main {
+  padding: 0 20px;
+}
+
 .jf-container {
   margin: 0 auto;
   max-width: 960px;
   width: 100%;
+}
+
+.jf-line-bd-bottom {
+  border-bottom: 1px solid #D9D9D9;
 }
 

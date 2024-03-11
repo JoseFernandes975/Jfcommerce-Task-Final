@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Client from "./routes/Client";
+import Catalog from "./routes/Client/Catalog";
 
 function App() {
   
@@ -7,7 +8,7 @@ function App() {
     <BrowserRouter>
     <Routes>
       <Route path='/' element={<Client />}> 
-
+       <Route path="catalog" element={<Catalog />} />
       </Route>
     </Routes>
     </BrowserRouter>

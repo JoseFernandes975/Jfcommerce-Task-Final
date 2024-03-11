@@ -1,0 +1,31 @@
+.jf-container-card {
+    max-width: 280px;
+    background-color: #FFFFFF;
+    border: 1px solid #D9D9D9;
+    border-radius: 4px;
+}
+
+.jf-item-top {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+}
+
+.jf-item-top img{
+  width: 150px;
+  height: 150px;
+}
+
+.jf-item-bottom {
+    padding: 10px 20px;
+}
+
+.jf-price {
+    font-size: 20px;
+    color: #0CAF1D;
+}
+
+.jf-name {
+    color: #636363;
+    font-size: 12px;
+}
