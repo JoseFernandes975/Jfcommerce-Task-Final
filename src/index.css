@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 
 :root {
+  --jf-primary-background: #E8E8E8;
+
   --jf-primary-font-color: #636363;
 }
 
@@ -12,7 +14,7 @@
 }
 
 body {
- 
+  background-color: var(--jf-primary-background);
 }
 
 .jf-container {

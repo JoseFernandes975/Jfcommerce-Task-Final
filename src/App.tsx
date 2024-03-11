@@ -1,9 +1,16 @@
-import HeaderClient from "./components/HeaderClient";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Client from "./routes/Client";
 
 function App() {
   
   return (
-    <HeaderClient />
+    <BrowserRouter>
+    <Routes>
+      <Route path='/' element={<Client />}> 
+
+      </Route>
+    </Routes>
+    </BrowserRouter>
   );
 }
 
