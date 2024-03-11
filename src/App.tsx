@@ -1,9 +1,9 @@
+import HeaderClient from "./components/HeaderClient";
 
 function App() {
   
-
   return (
-    <h1>DSCommerce</h1>
+    <HeaderClient />
   );
 }
 

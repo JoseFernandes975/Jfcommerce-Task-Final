@@ -1,0 +1,37 @@
+.jf-header-container-client {
+    background-color: #FFE500;
+    height: 70px;
+    padding: 0 20px;
+    display: flex;
+}
+
+.jf-nav-container-client {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.jf-nav-container-client h1 {
+    font-size: 16px;
+    color: var(--jf-primary-font-color);
+}
+
+.jf-nav-container-client h3 {
+    font-size: 14px;
+    color: var(--jf-primary-font-color);
+}
+
+.jf-container-items {
+    display: flex;
+    flex-direction: row;
+}
+
+.jf-container-items img{
+   margin-right: 20px;
+}
+
+@media(min-width: 575px) {
+    .jf-nav-container-client h1 {
+        font-size: 24px;
+    }
+}
