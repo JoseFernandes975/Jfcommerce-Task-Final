@@ -1,5 +1,5 @@
 .jf-header-container-client {
-    background-color: #FFE500;
+    background-color: var(--jf-secondary-background);
     height: 70px;
     padding: 0 20px;
     display: flex;

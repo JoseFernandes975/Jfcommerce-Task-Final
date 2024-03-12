@@ -8,7 +8,7 @@ import SearchBar from '../../../components/SearchBar';
 
 export default function Catalog(){
 
-    const [products, setProducts] = useState<ProductDTO[]>();
+    const [products, setProducts] = useState<ProductDTO[]>([]);
 
     const [isLastPage, setIsLastPage] = useState<boolean>(false);
 
@@ -19,7 +19,8 @@ export default function Catalog(){
 
     useEffect(() => {
       productService.findPageProduct(queryParams.name, queryParams.page).then(response => {
-        setProducts(response.data.content);
+        const newProducts = response.data.content;
+        setProducts(products.concat(newProducts));
         setIsLastPage(response.data.last);
       }).catch(error => {
         console.log(error);
@@ -29,7 +30,7 @@ export default function Catalog(){
 
 
     function handleSearchName(searchValue: string){
-      console.log(searchValue);
+      setProducts([]);
       setQueryParams({...queryParams, name: searchValue, page: 0});
     }
 

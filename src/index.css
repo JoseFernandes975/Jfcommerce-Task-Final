@@ -2,6 +2,7 @@
 
 :root {
   --jf-primary-background: #E8E8E8;
+  --jf-secondary-background: #FFE500;
 
   --jf-primary-font-color: #636363;
 }
@@ -19,6 +20,10 @@ body {
 
 main {
   padding: 0 20px;
+}
+
+a, a:hover {
+  text-decoration: none;
 }
 
 .jf-container {
