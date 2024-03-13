@@ -3,6 +3,7 @@
 :root {
   --jf-primary-background: #E8E8E8;
   --jf-secondary-background: #FFE500;
+  --jf-tertiary-background: #FFFF;
 
   --jf-primary-font-color: #636363;
 }
@@ -12,6 +13,7 @@
   padding: 0;
   margin: 0;
   border: 0;
+  box-sizing: border-box;
 }
 
 body {
@@ -36,3 +38,50 @@ a, a:hover {
   border-bottom: 1px solid #D9D9D9;
 }
 
+.jf-price {
+  font-size: 20px;
+  color: #0CAF1D;
+}
+
+.jf-name {
+  color: #636363;
+  font-size: 12px;
+}
+
+.jf-category-card {
+  background-color: #636363;
+  border-radius: 4px;
+  color: #FFFFFF;
+  font-weight: 700;
+  font-size: 12px;
+  padding: 7px;
+}
+
+.jf-buttom-blue {
+  height: 42px;
+  padding: 10px 0;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  width: 100%;
+  background-color: #3483FA;
+  border-radius: 4px;
+  color: #FFFFFF;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.jf-button-white {
+  height: 42px;
+  padding: 10px 0;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  width: 100%;
+  background-color:  #FFFFFF;
+  border: 1px solid #3483FA;
+  border-radius: 4px;
+  color: #3483FA;
+  font-size: 16px;
+  font-weight: 700;
+}
