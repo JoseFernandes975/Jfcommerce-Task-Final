@@ -19,3 +19,12 @@ export function findPageProduct(name: string, page: number){
 
     return requestBackEnd(config);
 }
+
+export function findProductById(id: number){
+    const config : AxiosRequestConfig = {
+        method: 'GET',
+        url: `/products/${id}`
+    }
+
+    return requestBackEnd(config);
+}

@@ -1,5 +1,6 @@
 import './styels.css';
 import { ProductDTO } from '../../models/product';
+import { Link } from 'react-router-dom';
 
 type Props = {
  product: ProductDTO
@@ -8,7 +9,8 @@ type Props = {
 export default function ProductCard({ product }: Props){
     
     return(
-        <div className="jf-container-card">
+        <Link to={`/details/${product.id}`}>
+         <div className="jf-container-card">
             <div className='jf-item-top jf-line-bd-bottom'>
                 <img src={product.imgUrl} alt={product.name} />
             </div>
@@ -19,5 +21,7 @@ export default function ProductCard({ product }: Props){
             </div>
 
         </div>
+        </Link>
+       
     );
 }
