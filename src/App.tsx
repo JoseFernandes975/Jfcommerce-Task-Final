@@ -2,6 +2,7 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Client from "./routes/Client";
 import Catalog from "./routes/Client/Catalog";
 import Details from "./routes/Client/Details";
+import Cart from "./routes/Client/Cart";
 
 function App() {
   
@@ -12,6 +13,7 @@ function App() {
        <Route index element={<Navigate to={'catalog'} />} />
        <Route path="catalog" element={<Catalog />} />
        <Route path="details/:productId" element={<Details />} />
+       <Route path="cart" element={<Cart />} />
       </Route>
     </Routes>
     </BrowserRouter>
