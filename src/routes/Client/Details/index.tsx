@@ -2,15 +2,18 @@ import './styles.css';
 import CategoriesCard from '../../../components/CategoriesCard';
 import ButtonBlue from '../../../components/ButtonBlue';
 import ButtonWhite from '../../../components/ButtonWhite';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import * as productService from '../../../services/product-service';
 import { ProductDTO } from '../../../models/product';
 import { Link } from 'react-router-dom';
+import * as cartService from '../../../services/cart-service';
 
 export default function Details(){
     
     const params = useParams();
+
+    const navigate = useNavigate();
 
     const [product, setProduct] = useState<ProductDTO>();
 
@@ -19,6 +22,14 @@ export default function Details(){
        setProduct(response.data);
      })
     },[]);
+
+    function handleAddProduct(){
+      if(product){
+        cartService.addProduct(product);
+        navigate('/cart');
+      }
+      
+    }
 
     return(
         <main>
@@ -52,7 +63,10 @@ export default function Details(){
                
                 
                 <div className='jf-buttons-container'>
-                 <ButtonBlue text='Comprar'/>
+                  <div onClick={handleAddProduct}>
+                  <ButtonBlue text='Comprar'/>
+                  </div>
+                
 
                   <Link to={'/'}>
                    <ButtonWhite text='Início' />
