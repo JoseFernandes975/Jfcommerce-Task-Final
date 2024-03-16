@@ -4,7 +4,7 @@
 
 .jf-container-details-product {
     background-color: var(--jf-tertiary-background);
-    border: 1px solid #D9D9D9;
+    border: 1px solid var(--jf-secondary-border-color);
     border-radius: 4px;
     width: 100%;
 }
@@ -25,7 +25,7 @@
 
 .jf-description {
     margin-top: 10px;
-    color: #636363;
+    color: var(--jf-primary-font-color);
     font-size: 12px;
 }
 

@@ -1,5 +1,3 @@
-import './styles.css';
-
 export type Props = {
     text: string
 }

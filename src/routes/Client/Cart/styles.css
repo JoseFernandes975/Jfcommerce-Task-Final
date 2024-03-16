@@ -2,6 +2,10 @@
     padding: 20px 0;
 }
 
+.jf-cart-empty {
+    color: var(--jf-primary-font-color);
+}
+
 .jf-cart-container {
     background-color: #FFFFFF;
     border: 1px solid #D9D9D9;
