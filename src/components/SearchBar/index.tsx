@@ -25,7 +25,7 @@ export default function SearchBar({ onSubmitSearch }: Props){
     }
 
     return(
-      <form onSubmit={handleSubmitInput}>
+      <form className='jf-form-searchbar' onSubmit={handleSubmitInput}>
         <button type='submit'>🔎︎</button>
         <input  onChange={handleChange} type="text" placeholder='Nome do produto' />
         <button onClick={handleClearInput} type='reset'>x</button>

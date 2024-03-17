@@ -46,6 +46,20 @@ a, a:hover {
   border-bottom: 1px solid var(--jf-secondary-border-color);
 }
 
+.jf-line-bd-error {
+  border: 1px solid #FF3333;
+}
+
+.jf-error-msg {
+  display: none;
+  color: #FF3333;
+  font-size: 12px;
+}
+
+.jf-mt20 {
+  margin-top: 20px;
+}
+
 .jf-price {
   font-size: 20px;
   color: var(--jf-quartenary-font-color);

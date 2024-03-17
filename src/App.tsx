@@ -3,6 +3,7 @@ import Client from "./routes/Client";
 import Catalog from "./routes/Client/Catalog";
 import Details from "./routes/Client/Details";
 import Cart from "./routes/Client/Cart";
+import Login from "./routes/Client/Login";
 
 function App() {
   
@@ -14,6 +15,7 @@ function App() {
        <Route path="catalog" element={<Catalog />} />
        <Route path="details/:productId" element={<Details />} />
        <Route path="cart" element={<Cart />} />
+       <Route path="login" element={<Login />} />
       </Route>
     </Routes>
     </BrowserRouter>
