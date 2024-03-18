@@ -2,6 +2,7 @@ import { AxiosRequestConfig } from "axios";
 import { CredentialsDTO } from "../models/auth";
 import { CLIENT_ID, CLIENT_SECRET } from "../utils/system";
 import { requestBackEnd } from "../utils/request";
+import * as tokenRepository from '../localstorage/token-repository';
 import QueryString from "qs";
 
  export function requestLogin(loginData: CredentialsDTO){
@@ -24,4 +25,8 @@ import QueryString from "qs";
     }
 
     return requestBackEnd(config);
+ }
+
+ export function saveToken(token: string){
+    tokenRepository.saveToken(token);
  }

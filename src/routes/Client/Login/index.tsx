@@ -3,8 +3,11 @@ import { useState } from 'react';
 import ButtonBlue from '../../../components/ButtonBlue';
 import './styles.css';
 import * as authService from '../../../services/auth-service';
+import { useNavigate } from 'react-router-dom';
 
 export default function Login(){
+
+  const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
         username: "",
@@ -22,6 +25,8 @@ export default function Login(){
      event.preventDefault();
      authService.requestLogin(formData).then(response => {
         console.log(response);
+        authService.saveToken(response.data.access_token);
+        navigate('/catalog');
      }).catch(error => {
         console.log(error);
      })
