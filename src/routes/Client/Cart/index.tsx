@@ -3,13 +3,15 @@ import ButtonBlue from '../../../components/ButtonBlue';
 import ButtonWhite from '../../../components/ButtonWhite';
 import { OrderDTO } from '../../../models/order';
 import * as cartService from '../../../services/cart-service';
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { ContextCartCount } from '../../../utils/context-cart';
 
 export default function Cart(){
 
     const [cart, setCart] = useState<OrderDTO>(cartService.getCart());
     
+    const { setContextCartCount } = useContext(ContextCartCount);
 
     function handleIncreaseQuantity(productId: number){
       cartService.increaseQtd(productId);
@@ -21,6 +23,9 @@ export default function Cart(){
       setCart(cartService.getCart());
     }
 
+     useEffect(() => {
+       setContextCartCount(cart.items.length);
+     }, [cart])
 
     return(
      <main>

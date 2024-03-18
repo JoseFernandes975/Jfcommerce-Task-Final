@@ -4,10 +4,20 @@ import Catalog from "./routes/Client/Catalog";
 import Details from "./routes/Client/Details";
 import Cart from "./routes/Client/Cart";
 import Login from "./routes/Client/Login";
+import {  useEffect, useState } from "react";
+import { ContextCartCount } from "./utils/context-cart";
+import * as cartService from './services/cart-service';
 
 function App() {
   
+  const [contextCartCount, setContextCartCount] = useState<number>(0);
+
+  useEffect(() => {
+    setContextCartCount(cartService.getCart().items.length);
+  }, [])
+
   return (
+    <ContextCartCount.Provider value={{contextCartCount, setContextCartCount}}>
     <BrowserRouter>
     <Routes>
       <Route path='/' element={<Client />}> 
@@ -19,6 +29,7 @@ function App() {
       </Route>
     </Routes>
     </BrowserRouter>
+    </ContextCartCount.Provider>
   );
 }
 
