@@ -1,13 +1,16 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import ButtonBlue from '../../../components/ButtonBlue';
 import './styles.css';
 import * as authService from '../../../services/auth-service';
 import { useNavigate } from 'react-router-dom';
+import { ContextToken } from '../../../utils/context-token';
 
 export default function Login(){
 
   const navigate = useNavigate();
+
+  const { setContextTokenPayload } = useContext(ContextToken);
 
     const [formData, setFormData] = useState({
         username: "",
@@ -26,6 +29,7 @@ export default function Login(){
      authService.requestLogin(formData).then(response => {
         console.log(response);
         authService.saveToken(response.data.access_token);
+        setContextTokenPayload(authService.getAccessTokenPayload());
         navigate('/catalog');
      }).catch(error => {
         console.log(error);

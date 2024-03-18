@@ -4,6 +4,8 @@ import { CLIENT_ID, CLIENT_SECRET } from "../utils/system";
 import { requestBackEnd } from "../utils/request";
 import * as tokenRepository from '../localstorage/token-repository';
 import QueryString from "qs";
+import { AccessTokenPayloadDTO } from "../models/token";
+import jwtDecode  from 'jwt-decode';
 
  export function requestLogin(loginData: CredentialsDTO){
 
@@ -29,4 +31,22 @@ import QueryString from "qs";
 
  export function saveToken(token: string){
     tokenRepository.saveToken(token);
+ }
+
+ export function getAccessToken(){
+   return tokenRepository.get();
+ }
+
+ export function logout() {
+    tokenRepository.remove();
+ }
+
+ export function getAccessTokenPayload(): AccessTokenPayloadDTO | undefined {
+   const token = getAccessToken();
+
+   if(token){
+      return (jwtDecode(token) as AccessTokenPayloadDTO)
+   }
+
+   return undefined;
  }

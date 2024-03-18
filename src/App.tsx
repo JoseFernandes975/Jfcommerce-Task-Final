@@ -7,16 +7,23 @@ import Login from "./routes/Client/Login";
 import {  useEffect, useState } from "react";
 import { ContextCartCount } from "./utils/context-cart";
 import * as cartService from './services/cart-service';
+import * as authService from './services/auth-service';
+import { AccessTokenPayloadDTO } from "./models/token";
+import { ContextToken } from "./utils/context-token";
 
 function App() {
   
   const [contextCartCount, setContextCartCount] = useState<number>(0);
 
+  const [contextTokenPayload, setContextTokenPayload] = useState<AccessTokenPayloadDTO>();
+
   useEffect(() => {
     setContextCartCount(cartService.getCart().items.length);
+    setContextTokenPayload(authService.getAccessTokenPayload());
   }, [])
 
   return (
+    <ContextToken.Provider value={{ contextTokenPayload, setContextTokenPayload}}>
     <ContextCartCount.Provider value={{contextCartCount, setContextCartCount}}>
     <BrowserRouter>
     <Routes>
@@ -30,6 +37,7 @@ function App() {
     </Routes>
     </BrowserRouter>
     </ContextCartCount.Provider>
+    </ContextToken.Provider>
   );
 }
 
