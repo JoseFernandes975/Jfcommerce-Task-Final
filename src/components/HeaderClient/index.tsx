@@ -3,6 +3,7 @@ import cartIcon from '../../assets/CartIcon.svg';
 import { NavLink } from 'react-router-dom';
 import { useContext } from 'react';
 import { ContextCartCount } from '../../utils/context-cart';
+import LoggedUser from '../LoggedUser';
 
 export default function HeaderClient(){
 
@@ -29,7 +30,7 @@ export default function HeaderClient(){
 
                 </div>
                 
-                <h3>Entrar</h3>
+                <LoggedUser />
             </div>
         </nav>
     </header>
