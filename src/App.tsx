@@ -10,6 +10,7 @@ import * as cartService from './services/cart-service';
 import * as authService from './services/auth-service';
 import { AccessTokenPayloadDTO } from "./models/token";
 import { ContextToken } from "./utils/context-token";
+import Confirmation from "./routes/Client/Confirmation";
 
 function App() {
   
@@ -33,6 +34,7 @@ function App() {
        <Route path="details/:productId" element={<Details />} />
        <Route path="cart" element={<Cart />} />
        <Route path="login" element={<Login />} />
+       <Route path="orders/:orderId" element={<Confirmation />} />
       </Route>
     </Routes>
     </BrowserRouter>

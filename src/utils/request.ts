@@ -1,11 +1,16 @@
 import axios, { AxiosRequestConfig } from "axios";
 import { BASE_URL } from "./system";
+import * as authService from '../services/auth-service';
 
 export function requestBackEnd(config: AxiosRequestConfig){
-   config = {
-    ...config,
-    baseURL: BASE_URL
-   }
+    
 
-    return axios(config);
+   const headers = config.withCredentials 
+    ? {
+        ...config.headers,
+       Authorization: "Bearer " + authService.getAccessToken()
+    }
+    : config.headers;
+
+    return axios({...config, baseURL: BASE_URL, headers: headers});
 }

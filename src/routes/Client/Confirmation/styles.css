@@ -1,0 +1,21 @@
+#jf-section-order {
+    padding: 20px 0;
+}
+
+.jf-name-order {
+    color: #232F3E;
+    font-size: 12px;
+}
+
+.jf-message-order {
+    color: #636363;
+    font-size: 16px;
+    text-align: center;
+}
+
+@media(min-width: 575px){
+    .jf-message-order {
+        font-size: 24px;
+        text-align: left;
+    }
+}
