@@ -1,0 +1,33 @@
+#jf-header-admin {
+    background-color: #0CAF1D;
+    color: #ffff;
+    height: 70px;
+    display: flex;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+}
+
+nav h1 {
+    display: flex;
+    align-items: center;
+}
+
+.jf-menu-items-container {
+    display: flex;
+    align-items: center;
+    grid-gap: 20px;
+}
+
+.jf-menu-item {
+    display: flex;
+    flex-direction: row;
+    grid-gap: 5px;
+}
+
+.jf-menu-item p {
+    font-size: 14px;
+}
+

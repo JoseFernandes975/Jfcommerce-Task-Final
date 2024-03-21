@@ -13,6 +13,7 @@ import { ContextToken } from "./utils/context-token";
 import Confirmation from "./routes/Client/Confirmation";
 import { unstable_HistoryRouter as HistoryRouter } from 'react-router-dom';
 import {history} from './utils/history';
+import Admin from "./routes/Admin";
 
 function App() {
   
@@ -37,6 +38,9 @@ function App() {
        <Route path="cart" element={<Cart />} />
        <Route path="login" element={<Login />} />
        <Route path="orders/:orderId" element={<Confirmation />} />
+      </Route>
+      <Route path="/admin" element={<Admin/>}>
+
       </Route>
     </Routes>
     </HistoryRouter>
