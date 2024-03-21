@@ -1,4 +1,4 @@
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import Client from "./routes/Client";
 import Catalog from "./routes/Client/Catalog";
 import Details from "./routes/Client/Details";
@@ -11,6 +11,8 @@ import * as authService from './services/auth-service';
 import { AccessTokenPayloadDTO } from "./models/token";
 import { ContextToken } from "./utils/context-token";
 import Confirmation from "./routes/Client/Confirmation";
+import { unstable_HistoryRouter as HistoryRouter } from 'react-router-dom';
+import {history} from './utils/history';
 
 function App() {
   
@@ -26,7 +28,7 @@ function App() {
   return (
     <ContextToken.Provider value={{ contextTokenPayload, setContextTokenPayload}}>
     <ContextCartCount.Provider value={{contextCartCount, setContextCartCount}}>
-    <BrowserRouter>
+    <HistoryRouter history={history}>
     <Routes>
       <Route path='/' element={<Client />}> 
        <Route index element={<Navigate to={'catalog'} />} />
@@ -37,7 +39,7 @@ function App() {
        <Route path="orders/:orderId" element={<Confirmation />} />
       </Route>
     </Routes>
-    </BrowserRouter>
+    </HistoryRouter>
     </ContextCartCount.Provider>
     </ContextToken.Provider>
   );

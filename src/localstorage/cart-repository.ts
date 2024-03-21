@@ -16,5 +16,5 @@ export function get() : OrderDTO {
 }
 
 export function clear(){
-    localStorage.clear();
+    localStorage.removeItem(KEY_CART);
 }

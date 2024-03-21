@@ -3,11 +3,14 @@ import ButtonBlue from '../../../components/ButtonBlue';
 import ButtonWhite from '../../../components/ButtonWhite';
 import { OrderDTO } from '../../../models/order';
 import * as cartService from '../../../services/cart-service';
+import * as orderService from '../../../services/order-service';
 import { useContext, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ContextCartCount } from '../../../utils/context-cart';
 
 export default function Cart(){
+
+    const navigate = useNavigate();
 
     const [cart, setCart] = useState<OrderDTO>(cartService.getCart());
     
@@ -21,6 +24,18 @@ export default function Cart(){
     function handleDecreaseQuantity(productId: number){
       cartService.decreaseQtd(productId);
       setCart(cartService.getCart());
+    }
+
+    function handleSubmitNewOrder(){
+      if(cart.items.length > 0){
+        orderService.sendOrder(cart).then(response => {
+          const order = response.data;
+          cartService.clearCart();
+          setCart(cartService.getCart());
+          setContextCartCount(0);
+          navigate(`/orders/${order.id}`);
+        });
+      }
     }
 
      useEffect(() => {
@@ -67,7 +82,10 @@ export default function Cart(){
        
 
            <div className='jf-bt-container'>
+            <div onClick={handleSubmitNewOrder}>
              <ButtonBlue text='Finalizar pedido' />
+            </div>
+            
              <Link to={'/catalog'}>
              <ButtonWhite text='Continuar Comprando' />
              </Link>
