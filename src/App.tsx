@@ -8,13 +8,14 @@ import {  useEffect, useState } from "react";
 import { ContextCartCount } from "./utils/context-cart";
 import * as cartService from './services/cart-service';
 import * as authService from './services/auth-service';
-import { AccessTokenPayloadDTO } from "./models/token";
+import { AccessTokenPayloadDTO } from "./models/auth";
 import { ContextToken } from "./utils/context-token";
 import Confirmation from "./routes/Client/Confirmation";
 import { unstable_HistoryRouter as HistoryRouter } from 'react-router-dom';
 import {history} from './utils/history';
 import Admin from "./routes/Admin";
 import Home from "./routes/Admin/Home";
+import { PrivateRoute } from "./components/PrivateRoute";
 
 function App() {
   
@@ -40,8 +41,10 @@ function App() {
        <Route path="login" element={<Login />} />
        <Route path="orders/:orderId" element={<Confirmation />} />
       </Route>
-      <Route path="/admin" element={<Admin/>}>
+      <Route path="/admin" element={<PrivateRoute roles={["ROLE_ADMIN"]}><Admin/></PrivateRoute>}>
+       <Route index element={<Navigate to={'home'} />} />
        <Route path="home" element={<Home />} />
+    
       </Route>
     </Routes>
     </HistoryRouter>

@@ -7,7 +7,6 @@ export type AccessTokenPayloadDTO = {
 export type RoleDTO = 
     "ROLE_CLIENT" | "ROLE_ADMIN";
 
-
 export type CredentialsDTO = {
  username: string,
  password: string
