@@ -14,6 +14,7 @@ import Confirmation from "./routes/Client/Confirmation";
 import { unstable_HistoryRouter as HistoryRouter } from 'react-router-dom';
 import {history} from './utils/history';
 import Admin from "./routes/Admin";
+import Home from "./routes/Admin/Home";
 
 function App() {
   
@@ -40,7 +41,7 @@ function App() {
        <Route path="orders/:orderId" element={<Confirmation />} />
       </Route>
       <Route path="/admin" element={<Admin/>}>
-
+       <Route path="home" element={<Home />} />
       </Route>
     </Routes>
     </HistoryRouter>

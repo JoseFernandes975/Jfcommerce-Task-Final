@@ -4,7 +4,7 @@ import { CLIENT_ID, CLIENT_SECRET } from "../utils/system";
 import { requestBackEnd } from "../utils/request";
 import * as tokenRepository from '../localstorage/token-repository';
 import QueryString from "qs";
-import { AccessTokenPayloadDTO } from "../models/token";
+import { AccessTokenPayloadDTO, RoleDTO } from "../models/auth";
 import jwtDecode  from 'jwt-decode';
 
  export function requestLogin(loginData: CredentialsDTO){
@@ -54,4 +54,21 @@ import jwtDecode  from 'jwt-decode';
  export function isAuthenticated(): boolean {
    const tokenPayload = getAccessTokenPayload();
     return tokenPayload && tokenPayload.exp * 1000 > Date.now() ? true : false;
+ }
+
+ export function hasAnyRoles(roles: RoleDTO[]){
+   if(roles.length === 0){
+      return true
+   }
+
+   const tokenPayload = getAccessTokenPayload();
+
+   if(tokenPayload !== undefined){
+    for(let i = 0; i < roles.length; i++){
+      if(tokenPayload.authorities.includes(roles[i])){
+         return true;
+      }
+    }
+   }
+   return false;
  }

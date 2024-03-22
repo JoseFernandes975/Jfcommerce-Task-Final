@@ -3,6 +3,7 @@
     height: 70px;
     padding: 0 20px;
     display: flex;
+    color: #636363;
 }
 
 .jf-nav-container-client {
@@ -39,6 +40,10 @@
     align-items: center;
     flex-direction: row;
     margin-right: 20px;
+}
+
+.jf-container-cart-header img {
+    margin-left: 20px;
 }
 
 .jf-cart-count {
