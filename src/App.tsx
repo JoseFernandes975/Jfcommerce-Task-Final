@@ -16,6 +16,7 @@ import {history} from './utils/history';
 import Admin from "./routes/Admin";
 import Home from "./routes/Admin/Home";
 import { PrivateRoute } from "./components/PrivateRoute";
+import Products from "./routes/Admin/Products";
 
 function App() {
   
@@ -44,6 +45,7 @@ function App() {
       <Route path="/admin" element={<PrivateRoute roles={["ROLE_ADMIN"]}><Admin/></PrivateRoute>}>
        <Route index element={<Navigate to={'home'} />} />
        <Route path="home" element={<Home />} />
+       <Route path="products" element={<Products />} />
     
       </Route>
     </Routes>

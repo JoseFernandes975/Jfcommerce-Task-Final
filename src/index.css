@@ -51,6 +51,15 @@ a, a:hover {
   border-bottom: 1px solid var(--jf-secondary-border-color);
 }
 
+.jf-product-listing-image {
+ height: 69px;
+ width: 69px;
+}
+
+.jf-txt-left {
+  text-align: left;
+} 
+
 .jf-line-bd-error {
   border: 1px solid #FF3333;
 }
@@ -63,6 +72,10 @@ a, a:hover {
 
 .jf-mt20 {
   margin-top: 20px;
+}
+
+.jf-mb20 {
+  margin-bottom: 20px;
 }
 
 .jf-price {
