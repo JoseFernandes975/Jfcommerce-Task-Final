@@ -17,6 +17,7 @@ import Admin from "./routes/Admin";
 import Home from "./routes/Admin/Home";
 import { PrivateRoute } from "./components/PrivateRoute";
 import Products from "./routes/Admin/Products";
+import ProductForm from "./routes/Admin/ProductForm";
 
 function App() {
   
@@ -46,7 +47,7 @@ function App() {
        <Route index element={<Navigate to={'home'} />} />
        <Route path="home" element={<Home />} />
        <Route path="products" element={<Products />} />
-    
+       <Route path="products/create" element={<ProductForm />} />
       </Route>
     </Routes>
     </HistoryRouter>
