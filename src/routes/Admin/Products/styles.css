@@ -2,6 +2,11 @@
     padding: 20px 0;
 }
 
+.jf-product-listing-image img{
+  width: 69px;
+  height: 69px;
+}
+
 table {
     background-color: #FFFFFF;
     width: 100%;

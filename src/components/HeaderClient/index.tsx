@@ -6,10 +6,13 @@ import { useContext } from 'react';
 import { ContextCartCount } from '../../utils/context-cart';
 import LoggedUser from '../LoggedUser';
 import * as authService from '../../services/auth-service';
+import { ContextToken } from '../../utils/context-token';
 
 export default function HeaderClient(){
 
-    const {contextCartCount } = useContext(ContextCartCount);
+    const { contextCartCount } = useContext(ContextCartCount);
+
+    const { contextTokenPayload } = useContext(ContextToken);
 
     return(
     <header className='jf-header-container-client'>
@@ -23,6 +26,8 @@ export default function HeaderClient(){
              <div className='jf-container-cart-header'>
 
                    {
+                    contextTokenPayload
+                    &&
                     authService.hasAnyRoles(["ROLE_ADMIN"])
                     &&
                      <NavLink to={'/admin'}>
