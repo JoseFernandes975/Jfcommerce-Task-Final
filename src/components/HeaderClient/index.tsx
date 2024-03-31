@@ -28,6 +28,8 @@ export default function HeaderClient(){
                    {
                     contextTokenPayload
                     &&
+                    authService.isAuthenticated()
+                    &&
                     authService.hasAnyRoles(["ROLE_ADMIN"])
                     &&
                      <NavLink to={'/admin'}>

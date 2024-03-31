@@ -1,4 +1,4 @@
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import { ContextToken } from "../../utils/context-token"
 import * as authService from '../../services/auth-service';
 import './styles.css';
@@ -14,18 +14,24 @@ export default function LoggedUser() {
         setContextTokenPayload(undefined);
     }
 
+    useEffect(() => {
+      setContextTokenPayload(authService.getAccessTokenPayload());
+    }, [])
+
     return(
         
             contextTokenPayload 
             &&
             authService.isAuthenticated()
             ? (
-               <div className="jf-container-logged-user">
-                 <p>{contextTokenPayload?.user_name}</p>
-                 <h4 onClick={handleLogoutClick}>Sair</h4>
-               </div>
+              <div className="jf-container-logged-user">
+               <p>{contextTokenPayload?.user_name}</p>
+               <h4 onClick={handleLogoutClick}>Sair</h4>
+             </div>
               )
-            : ( <Link to={'login'}><h3>Entrar</h3></Link>  )
-
+            : ( 
+              <Link to={'login'}><h3>Entrar</h3></Link>
+              )
+              
     )
 }
