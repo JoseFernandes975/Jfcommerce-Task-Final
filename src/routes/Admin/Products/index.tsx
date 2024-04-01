@@ -6,7 +6,8 @@ import { ProductDTO } from '../../../models/product';
 import { useEffect, useState } from 'react';
 import * as productService from '../../../services/product-service';
 import SearchBar from '../../../components/SearchBar';
-
+import { useNavigate } from 'react-router-dom';
+import ButtonWhite from '../../../components/ButtonWhite';
 
 type FormData = {
     name: string,
@@ -23,6 +24,8 @@ export default function Products(){
     const [products, setProducts] = useState<ProductDTO[]>([]);
 
     const [isLastPage, setIsLastPage] = useState<boolean>(false);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
       productService.findPageProduct(queryParams.name, queryParams.page).then(response => {
@@ -42,9 +45,21 @@ export default function Products(){
       setQueryParams({...queryParams, name: searchName, page: 0});
     }
 
+    function handleEditProductClick(productId: number){
+     navigate(`${productId}`);
+    }
+
+    function handleCreateProductClick(){
+      navigate(`create`);
+    }
+
   return(
    <main>
     <section id='jf-section-products-admin' className='jf-container'>
+
+      <div className='jf-container-btn-create-product jf-mb20' onClick={handleCreateProductClick}>
+        <ButtonWhite text='Novo' />
+      </div>
 
       <SearchBar onSubmitSearch={handleSearchProducts} />
 
@@ -68,7 +83,7 @@ export default function Products(){
             <td className='jf-product-listing-image'><img src={x.imgUrl} alt={x.name} /></td>
             <td className='jf-tb768'>R$ {x.price.toFixed(2)}</td> 
             <td className='jf-txt-left'>{x.name}</td>
-            <td><img className='jf-product-listing-btn' src={editIcon} alt="Editar" /></td>
+            <td><img className='jf-product-listing-btn' src={editIcon} alt="Editar" onClick={() => handleEditProductClick(x.id)} /></td>
             <td><img className='jf-product-listing-btn' src={deleteIcon} alt="Deletar" /></td>
         </tr>
             ))

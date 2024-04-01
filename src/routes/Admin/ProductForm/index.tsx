@@ -1,8 +1,16 @@
-import { useState } from 'react';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { useEffect, useState } from 'react';
 import FormInput from '../../../components/FormInput';
 import './styles.css';
+import { update, updateAll } from '../../../services/forms';
+import { useParams } from 'react-router-dom';
+import * as productService from '../../../services/product-service';
 
 export default function ProductForm(){
+
+  const params = useParams();
+
+  const isEditing = params.productId !== 'create';
 
     const [formData, setFormData] = useState<any>({
             name: {
@@ -31,8 +39,16 @@ export default function ProductForm(){
     function handleInputChange(event: any){
       const inputName = event.target.name;
       const inputValue = event.target.value;
-     setFormData({...formData, [inputName]: {...formData[inputName], value: inputValue}})
+     setFormData(update(formData, inputName, inputValue));
     }
+
+    useEffect(() => {
+      if(isEditing){
+        productService.findProductById(Number(params.productId)).then(response => {
+          setFormData(updateAll(formData, response.data));
+        })
+      }
+    }, [])
 
     return(
      <main>

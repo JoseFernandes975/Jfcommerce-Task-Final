@@ -47,7 +47,7 @@ function App() {
        <Route index element={<Navigate to={'home'} />} />
        <Route path="home" element={<Home />} />
        <Route path="products" element={<Products />} />
-       <Route path="products/create" element={<ProductForm />} />
+       <Route path="products/:productId" element={<ProductForm />} />
       </Route>
     </Routes>
     </HistoryRouter>
