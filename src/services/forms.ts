@@ -12,3 +12,18 @@ export function updateAll(inputs: any, newValue: any){
 
     return newInput;
 }
+
+export function validate(inputs: any, name: string){
+    if(!inputs[name].validation){
+        return inputs;
+    }
+
+    const isInvalid = !inputs[name].validation(inputs[name].value);
+    return {...inputs, [name]: {...inputs[name], invalid: isInvalid.toString()}}
+}
+
+export function updateAndValidate(inputs: any, name: string, newValue: string){
+   const dataUpdate = update(inputs, name, newValue);
+   const dataValidate = validate(dataUpdate, name);
+   return dataValidate;
+}
