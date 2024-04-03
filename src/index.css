@@ -12,6 +12,8 @@
   --jf-tertiary-font-color: #3483FA;
   --jf-quartenary-font-color: #0CAF1D;
 
+  --jf-placeholder-font-color: #D9D9D9;
+
   --jf-primary-border-color: #3483FA;
   --jf-secondary-border-color: #D9D9D9;
 
@@ -152,7 +154,7 @@ a, a:hover {
 }
 
 .jf-form-control::placeholder {
-   color: #BDBDBD;
+  color: var(--jf-placeholder-font-color);
 }
 
 .jf-form-control[data-invalid="true"] {
@@ -173,4 +175,9 @@ a, a:hover {
   resize: none;
   height: 128px;
   padding-top: 10px;
+}
+
+.jf-form-select-container {
+  padding: unset;
+  height: unset;
 }

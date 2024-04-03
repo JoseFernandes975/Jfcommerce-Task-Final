@@ -8,10 +8,16 @@ import * as productService from '../../../services/product-service';
 import ButtonWhite from '../../../components/ButtonWhite';
 import ButtonBlue from '../../../components/ButtonBlue';
 import FormTextarea from '../../../components/FormTextarea';
+import FormSelect from '../../../components/FormSelect';
+import { CategoryDTO } from '../../../models/product';
+import { selectStyles } from '../../../utils/select';
+import * as categoryServices from '../../../services/category-service';
 
 export default function ProductForm(){
 
   const params = useParams();
+
+  const [categories, setCategories] = useState<CategoryDTO[]>([])
 
   const isEditing = params.productId !== 'create';
 
@@ -45,6 +51,16 @@ export default function ProductForm(){
                 placeholder: "Imagem",
                 value: ""
               },
+              categories: {
+               name: "categories",
+               id: "categories",
+               placeholder: "Categorias",
+               value: [],
+               validation: function(value: CategoryDTO[]){
+                return value.length > 0;
+              },
+              message: "Escolha ao menos uma categoria"
+              },
               description: {
                 name: "description",
                 id: "description",
@@ -69,6 +85,13 @@ export default function ProductForm(){
      setFormData(newFormDataDirty);
     }
 
+    useEffect(() => {
+      categoryServices.findAllRequest().then(response => {
+        setCategories(response.data);
+      }).then(error => {
+        console.log(error);
+      });
+    }, [])
     
 
     useEffect(() => {
@@ -99,6 +122,16 @@ export default function ProductForm(){
 
         <div>
            <FormInput {...formData.imgUrl} className='jf-form-control' onChange={handleInputChange} onTurnDirty={handleTurnDirty} />
+        </div>
+
+        <div>
+          <FormSelect {...formData.categories} className="jf-form-control jf-form-select-container"
+                styles={selectStyles}
+                options={categories} onChange={(obj: any) => {
+                const newFormData = form.updateAndValidate(formData, "categories", obj);
+                 setFormData(newFormData);
+                }}  onTurnDirty={handleTurnDirty} isMulti getOptionLabel={(obj: any) => obj.name} getOptionValue={(obj: any) => String(obj.id)} />
+                <div className='jf-error-message'>{formData.categories.message}</div>
         </div>
 
         <div>
