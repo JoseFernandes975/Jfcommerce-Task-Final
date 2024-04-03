@@ -3,19 +3,20 @@ import { useEffect, useState } from 'react';
 import FormInput from '../../../components/FormInput';
 import './styles.css';
 import * as form from '../../../services/forms';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import * as productService from '../../../services/product-service';
-import ButtonWhite from '../../../components/ButtonWhite';
-import ButtonBlue from '../../../components/ButtonBlue';
 import FormTextarea from '../../../components/FormTextarea';
 import FormSelect from '../../../components/FormSelect';
 import { CategoryDTO } from '../../../models/product';
 import { selectStyles } from '../../../utils/select';
 import * as categoryServices from '../../../services/category-service';
+import { Link } from 'react-router-dom';
 
 export default function ProductForm(){
 
   const params = useParams();
+
+  const navigate = useNavigate();
 
   const [categories, setCategories] = useState<CategoryDTO[]>([])
 
@@ -85,6 +86,25 @@ export default function ProductForm(){
      setFormData(newFormDataDirty);
     }
 
+    function handleSubmit(event: any){
+      event.preventDefault();
+
+     const formDataValidated = form.dirtyAndValidateAll(formData);
+     
+     if(form.hasAnyInvalid(formDataValidated)){
+      setFormData(formDataValidated);
+       return;
+     }
+     
+     const newProduct = form.toValues(formData);
+
+     productService.insertRequest(newProduct).then(() => {
+      navigate('/admin/products');
+     }).catch(error => {
+      console.log(error);
+     })
+    }
+
     useEffect(() => {
       categoryServices.findAllRequest().then(response => {
         setCategories(response.data);
@@ -109,7 +129,7 @@ export default function ProductForm(){
         <div className='jf-container-form-product'>
           <h2 className='jf-title-form-product jf-mt20'>DADOS DO PRODUTO</h2>
     
-    <form className='jf-form-product jf-mt20' action="">
+    <form className='jf-form-product jf-mt20' action="submit" onSubmit={handleSubmit}>
       <div>
         <FormInput {...formData.name} className='jf-form-control' onChange={handleInputChange} onTurnDirty={handleTurnDirty} />
         <div className='jf-error-message'>{formData.name.message}</div>
@@ -138,15 +158,20 @@ export default function ProductForm(){
           <FormTextarea {...formData.description} className="jf-form-control jf-textarea" onChange={handleInputChange} onTurnDirty={handleTurnDirty} />
           <div className='jf-error-message'>{formData.description.message}</div>
         </div>
+
+
+        <div className='jf-btn-container-form'>
+
+          <Link to={'/admin/products'}>
+           <button type='reset' className='jf-button-white'>Cancelar</button>
+          </Link>
        
-       <div className='jf-btn-container-form'>
-        <ButtonWhite text='Cancelar' />
-        <ButtonBlue text='Salvar' />
-       </div>
+           <button type='submit' className='jf-buttom-blue'>Salvar</button>
 
-        
+         </div>
+
     </form>
-
+    
         </div>
 
         </section>

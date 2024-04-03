@@ -32,12 +32,7 @@
 
 .jf-btn-container-form {
     grid-gap: 20px;
-    display: flex;
-    flex-direction: column;
-}
-
-@media(min-width: 576px){
-    .jf-btn-container-form {
-        flex-direction: row;
-    }
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    width: 100%;
 }
