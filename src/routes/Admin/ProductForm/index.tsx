@@ -2,9 +2,12 @@
 import { useEffect, useState } from 'react';
 import FormInput from '../../../components/FormInput';
 import './styles.css';
-import { updateAll, updateAndValidate} from '../../../services/forms';
+import * as form from '../../../services/forms';
 import { useParams } from 'react-router-dom';
 import * as productService from '../../../services/product-service';
+import ButtonWhite from '../../../components/ButtonWhite';
+import ButtonBlue from '../../../components/ButtonBlue';
+import FormTextarea from '../../../components/FormTextarea';
 
 export default function ProductForm(){
 
@@ -41,13 +44,29 @@ export default function ProductForm(){
                 type: "text",
                 placeholder: "Imagem",
                 value: ""
+              },
+              description: {
+                name: "description",
+                id: "description",
+                type: "text",
+                placeholder: "Descrição",
+                value: "",
+                validation: function(value: any) {
+                  return /^.{10,}/.test(value);
+                }, 
+                message: "Favor informar uma descrição de pelo menos 10 caracteres"
               }
     })
 
     function handleInputChange(event: any){
       const inputName = event.target.name;
       const inputValue = event.target.value;
-     setFormData(updateAndValidate(formData, inputName, inputValue));
+     setFormData(form.updateAndValidate(formData, inputName, inputValue));
+    }
+
+    function handleTurnDirty(name: string){
+     const newFormDataDirty = form.toDirty(formData, name);
+     setFormData(newFormDataDirty);
     }
 
     
@@ -55,7 +74,7 @@ export default function ProductForm(){
     useEffect(() => {
       if(isEditing){
         productService.findProductById(Number(params.productId)).then(response => {
-          setFormData(updateAll(formData, response.data));
+          setFormData(form.updateAll(formData, response.data));
         })
       }
     }, [])
@@ -69,19 +88,28 @@ export default function ProductForm(){
     
     <form className='jf-form-product jf-mt20' action="">
       <div>
-        <FormInput {...formData.name} className='jf-form-control' onChange={handleInputChange}  />
+        <FormInput {...formData.name} className='jf-form-control' onChange={handleInputChange} onTurnDirty={handleTurnDirty} />
         <div className='jf-error-message'>{formData.name.message}</div>
       </div>
         
         <div>
-        <FormInput {...formData.price} className='jf-form-control' onChange={handleInputChange}  />
+        <FormInput {...formData.price} className='jf-form-control' onChange={handleInputChange} onTurnDirty={handleTurnDirty}  />
         <div className='jf-error-message'>{formData.price.message}</div>
         </div>
 
         <div>
-           <FormInput {...formData.imgUrl} className='jf-form-control' onChange={handleInputChange} />
+           <FormInput {...formData.imgUrl} className='jf-form-control' onChange={handleInputChange} onTurnDirty={handleTurnDirty} />
+        </div>
+
+        <div>
+          <FormTextarea {...formData.description} className="jf-form-control jf-textarea" onChange={handleInputChange} onTurnDirty={handleTurnDirty} />
+          <div className='jf-error-message'>{formData.description.message}</div>
         </div>
        
+       <div className='jf-btn-container-form'>
+        <ButtonWhite text='Cancelar' />
+        <ButtonBlue text='Salvar' />
+       </div>
 
         
     </form>

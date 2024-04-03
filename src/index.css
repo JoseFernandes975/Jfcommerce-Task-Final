@@ -168,3 +168,9 @@ a, a:hover {
 .jf-form-control[data-invalid="true"] ~ div {
   display: unset;
 }
+
+.jf-textarea {
+  resize: none;
+  height: 128px;
+  padding-top: 10px;
+}

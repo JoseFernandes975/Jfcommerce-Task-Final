@@ -27,3 +27,17 @@ export function updateAndValidate(inputs: any, name: string, newValue: string){
    const dataValidate = validate(dataUpdate, name);
    return dataValidate;
 }
+
+export function toValues(inputs: any){
+    const newFormData : any = {};
+
+    for(var name in inputs){
+        newFormData[name] = inputs[name].value;
+    }
+
+    return newFormData;
+}
+
+export function toDirty(inputs: any, name: string){
+    return {...inputs, [name]: {...inputs[name], dirty: "true"} };
+}
