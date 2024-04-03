@@ -2,6 +2,12 @@
     padding: 20px 0;
 }
 
+.jf-title-products {
+  color: #636363;
+  font-size: 16px;
+  text-align: center;
+}
+
 .jf-product-listing-image img{
   width: 69px;
   height: 69px;
@@ -69,6 +75,10 @@ th {
 
 
 @media (min-width: 576px) {
+  .jf-title-products {
+    text-align: left;
+    font-size: 24px;
+  }
     .jf-tb576 {
       display: table-cell;
     }

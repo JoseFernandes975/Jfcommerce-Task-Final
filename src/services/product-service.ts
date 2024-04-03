@@ -40,3 +40,14 @@ export function insertRequest(product: ProductDTO){
 
     return requestBackEnd(config);
 }
+
+export function updateRequest(id: number, product: ProductDTO){
+    const config : AxiosRequestConfig = {
+        method: "PUT",
+        url: `/products/${id}`,
+        data: product,
+        withCredentials: true
+    }
+
+    return requestBackEnd(config);
+}

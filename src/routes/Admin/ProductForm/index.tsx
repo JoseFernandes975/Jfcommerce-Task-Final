@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import FormInput from '../../../components/FormInput';
 import './styles.css';
-import * as form from '../../../services/forms';
+import * as form from '../../../utils/forms';
 import { useNavigate, useParams } from 'react-router-dom';
 import * as productService from '../../../services/product-service';
 import FormTextarea from '../../../components/FormTextarea';
@@ -89,20 +89,36 @@ export default function ProductForm(){
     function handleSubmit(event: any){
       event.preventDefault();
 
+      //suja e faz a validação de todos os campos
+      //retorna um formulario novo sujo e com os campos validados
      const formDataValidated = form.dirtyAndValidateAll(formData);
      
+     //verifica se tem algum campo invalido
+     //se tiver um campo invalido, para e cancela o submit
      if(form.hasAnyInvalid(formDataValidated)){
       setFormData(formDataValidated);
        return;
      }
      
+     //pega os nomes do campos e os valores e cria um objeto Product
      const newProduct = form.toValues(formData);
 
-     productService.insertRequest(newProduct).then(() => {
+     //se está editando pega o id do produto
+     if(isEditing){
+       newProduct.id = params.productId;
+     }
+
+     //se estiver editando faz a requisição update, se não, inserindo um novo porduct
+     const request = isEditing
+     ? productService.updateRequest(newProduct.id, newProduct)
+     : productService.insertRequest(newProduct);
+
+     request.then(() => {
       navigate('/admin/products');
      }).catch(error => {
       console.log(error);
      })
+
     }
 
     useEffect(() => {
@@ -171,7 +187,7 @@ export default function ProductForm(){
          </div>
 
     </form>
-    
+
         </div>
 
         </section>

@@ -57,6 +57,9 @@ export default function Products(){
    <main>
     <section id='jf-section-products-admin' className='jf-container'>
 
+
+      <h2 className='jf-title-products jf-mb20'>Cadastro de produtos</h2>
+
       <div className='jf-container-btn-create-product jf-mb20' onClick={handleCreateProductClick}>
         <ButtonWhite text='Novo' />
       </div>
