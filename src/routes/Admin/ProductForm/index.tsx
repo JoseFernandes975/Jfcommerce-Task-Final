@@ -108,7 +108,7 @@ export default function ProductForm(){
        newProduct.id = params.productId;
      }
 
-     //se estiver editando faz a requisição update, se não, inserindo um novo porduct
+     //se estiver editando faz a requisição update, se não, inserindo um novo product
      const request = isEditing
      ? productService.updateRequest(newProduct.id, newProduct)
      : productService.insertRequest(newProduct);

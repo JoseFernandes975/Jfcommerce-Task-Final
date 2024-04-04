@@ -82,3 +82,8 @@ export function hasAnyInvalid(inputs: any){
     }
     return false;
 }
+
+export function dirtyAndValidate(inputs: any, name: string){
+  const dataDirty = toDirty(inputs, name);
+  return validate(dataDirty, name);
+}

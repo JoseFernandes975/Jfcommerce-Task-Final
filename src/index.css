@@ -68,11 +68,6 @@ a, a:hover {
   border: 1px solid #FF3333;
 }
 
-.jf-error-msg {
-  display: none;
-  color: #FF3333;
-  font-size: 12px;
-}
 
 .jf-mt20 {
   margin-top: 20px;
@@ -157,7 +152,7 @@ a, a:hover {
   color: var(--jf-placeholder-font-color);
 }
 
-.jf-form-control[data-invalid="true"] {
+.jf-form-control[data-dirty="true"][data-invalid="true"] {
   border: 1px solid var(--jf-color-error);
 }
 
@@ -167,7 +162,18 @@ a, a:hover {
   display: none;
 }
 
-.jf-form-control[data-invalid="true"] ~ div {
+.jf-form-global-error-message {
+  border: 1px solid var(--jf-color-error);
+  border-radius: 5px;
+  width: 100%;
+  padding: 5px 10px;
+  display: flex;
+  justify-content: center;
+  color: var(--jf-color-error);
+  font-size: 12px;
+}
+
+.jf-form-control[data-dirty="true"][data-invalid="true"] ~ div {
   display: unset;
 }
 
