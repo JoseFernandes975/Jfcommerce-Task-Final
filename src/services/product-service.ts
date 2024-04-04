@@ -51,3 +51,13 @@ export function updateRequest(id: number, product: ProductDTO){
 
     return requestBackEnd(config);
 }
+
+export function deleteRequest(id: number){
+    const config : AxiosRequestConfig = {
+        method: "DELETE",
+        url: `/products/${id}`,
+        withCredentials: true
+    }
+
+    return requestBackEnd(config);
+}

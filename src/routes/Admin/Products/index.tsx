@@ -53,6 +53,15 @@ export default function Products(){
       navigate(`create`);
     }
 
+    function handleDeleteProductClick(id: number){
+      productService.deleteRequest(id).then(() => {
+        setProducts([]);
+        setQueryParams({...queryParams, page: 0});
+      }).catch(error => {
+        console.log(error);
+      })
+    }
+
   return(
    <main>
     <section id='jf-section-products-admin' className='jf-container'>
@@ -87,7 +96,7 @@ export default function Products(){
             <td className='jf-tb768'>R$ {x.price.toFixed(2)}</td> 
             <td className='jf-txt-left'>{x.name}</td>
             <td><img className='jf-product-listing-btn' src={editIcon} alt="Editar" onClick={() => handleEditProductClick(x.id)} /></td>
-            <td><img className='jf-product-listing-btn' src={deleteIcon} alt="Deletar" /></td>
+            <td><img className='jf-product-listing-btn' src={deleteIcon} alt="Deletar" onClick={() => handleDeleteProductClick(x.id)} /></td>
         </tr>
             ))
         }

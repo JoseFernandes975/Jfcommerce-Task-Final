@@ -8,8 +8,10 @@ export default function HeaderAdmin(){
     return(
     <header id='jf-header-admin'>
         <nav className='jf-container'>
-
+           <NavLink to={'/'}>
             <h1>DSCommerce</h1>
+           </NavLink>
+            
             
         <div  className='jf-menu-items-container'>
 
