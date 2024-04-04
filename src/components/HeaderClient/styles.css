@@ -3,7 +3,7 @@
     height: 70px;
     padding: 0 20px;
     display: flex;
-    color: #636363;
+    color:var(--jf-primary-font-color);
 }
 
 .jf-nav-container-client {
@@ -47,7 +47,7 @@
 }
 
 .jf-cart-count {
-    background-color: red;
+    background-color: var(--jf-color-error);
     color: var(--jf-secondary-font-color);
     display: flex;
     align-items: center;

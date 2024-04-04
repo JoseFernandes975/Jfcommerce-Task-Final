@@ -3,12 +3,12 @@
 }
 
 .jf-name-order {
-    color: #232F3E;
+    color: var(--jf-quartenary-font-color);
     font-size: 12px;
 }
 
 .jf-message-order {
-    color: #636363;
+    color: var(--jf-primary-font-color);
     font-size: 16px;
     text-align: center;
 }

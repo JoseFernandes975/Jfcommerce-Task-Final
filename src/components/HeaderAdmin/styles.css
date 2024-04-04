@@ -1,6 +1,6 @@
 #jf-header-admin {
-    background-color: #0CAF1D;
-    color: #ffff;
+    background-color: var(--jf-admin-background);
+    color: var(--jf-secondary-font-color);
     height: 70px;
     display: flex;
     padding: 20px;

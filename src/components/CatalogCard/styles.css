@@ -1,6 +1,6 @@
 .jf-container-card {
     max-width: 280px;
-    background-color: #FFFFFF;
+    background-color: var(--jf-tertiary-background);
     border: 1px solid var(--jf-secondary-border-color);
     border-radius: 4px;
 }

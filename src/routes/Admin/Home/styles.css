@@ -3,5 +3,5 @@
 }
 
 .jf-title-section {
-    color: #636363;
+    color: var(--jf-primary-font-color);
 }

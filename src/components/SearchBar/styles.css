@@ -7,36 +7,36 @@
 .jf-form-searchbar input {
     width: 100%;
     padding: 10px;
-    border: 1px solid #D9D9D9;
+    border: 1px solid var(--jf-secondary-border-color);
     border-right: none;
     border-left: none;
     outline: none;
 }
 
 .jf-form-searchbar input::placeholder {
-    color: #D9D9D9;
+    color: var(--jf-placeholder-font-color);
     font-size: 16px;
 }
 
 .jf-form-searchbar button[type='submit'] {
-    border: 1px solid #D9D9D9;
+    border: 1px solid var(--jf-secondary-border-color);
     border-right: none;
     border-radius: 4px 0 0 4px;
-    background-color: #EDEDED;
+    background-color: var(--jf-searchbar-background);
     padding: 10px;
     display: flex;
     align-items: center;
 }
 
 .jf-form-searchbar button[type='reset'] {
-    border: 1px solid #D9D9D9;
+    border: 1px solid var(--jf-secondary-border-color);
     border-left: none;
     border-radius: 0 4px 4px 0;
-    background-color: #EDEDED;
+    background-color: var(--jf-searchbar-background);
     padding: 10px;
     display: flex;
     align-items: center;
     font-size: 20px;
     font-weight: 700;
-    color: #636363;
+    color: var(--jf-primary-font-color);
 }

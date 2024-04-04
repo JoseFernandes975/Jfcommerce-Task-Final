@@ -7,15 +7,15 @@
     flex-direction: column;
     max-width: 360px;
     margin: 0 auto;
-    background-color: #FFFFFF;
+    background-color: var(--jf-tertiary-background);
     border-radius: 4px;
-    border: 1px solid #D9D9D9;
+    border: 1px solid var(--jf-secondary-border-color);
     padding: 20px;
 }
 
 .jf-login-container h2 {
     text-align: center;
-    color: #636363;
+    color: var(--jf-primary-font-color);
     font-size: 16px;
     font-weight: 400;
     margin-top: 20px;
@@ -29,13 +29,13 @@
 .jf-form-login input {
     width: 100%;
     padding: 10px;
-    border: 1px solid #D9D9D9;
+    border: 1px solid var(--jf-secondary-border-color);
     border-radius: 4px;
     outline: none;
     margin-top: 20px;
 }
 
 .jf-form-login input::placeholder {
-    color: #D9D9D9;
+    color:var(--jf-placeholder-font-color);
     font-size: 16px;
 }

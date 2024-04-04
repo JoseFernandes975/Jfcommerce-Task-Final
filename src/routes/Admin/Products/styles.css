@@ -3,7 +3,7 @@
 }
 
 .jf-title-products {
-  color: #636363;
+  color: var(--jf-primary-font-color);
   font-size: 16px;
   text-align: center;
 }
@@ -14,7 +14,7 @@
 }
 
 table {
-    background-color: #FFFFFF;
+    background-color: var(--jf-tertiary-background);
     width: 100%;
     border-radius: 10px 10px 0 0;
     border-spacing: 0;
@@ -24,21 +24,21 @@ table {
 table thead {
     height: 55px;
     font-size: 14px;
-    color: #636363; 
+    color:var(--jf-primary-font-color);
 }
 
 
 table tbody {
     text-align: center;
     font-size: 12px;
-    color: #636363;
-    background-color: #FFFFFF;
+    color: var(--jf-primary-font-color);
+    background-color: var(--jf-tertiary-background);
   
 }
 
 table tbody tr {
     height: 70px;
-    border-top: 1px solid #D9D9D9;
+    border-top: 1px solid var(--jf-secondary-border-color);
   }
 
 table th:nth-child(2) {
@@ -67,7 +67,7 @@ table td:last-child {
   }
 
 th {
-  color: #636363;   
+  color: var(--jf-primary-font-color);
   font-size: 14px;
   font-weight: 700;
 }
